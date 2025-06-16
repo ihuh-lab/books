@@ -15,6 +15,7 @@ interface BookFormData {
   language: string;
   description: string;
   description2: string;
+  quantity: string;
 }
 
 export default function EditBook() {
@@ -30,7 +31,8 @@ export default function EditBook() {
     pages: '',
     language: '',
     description: '',
-    description2: ''
+    description2: '',
+    quantity: '1'
   });
 
   const router = useRouter();
@@ -44,7 +46,8 @@ export default function EditBook() {
           if (data && data.id) {
             setForm({
               ...data,
-              published_date: data.published_date || new Date().toISOString().split('T')[0]
+              published_date: data.published_date || new Date().toISOString().split('T')[0],
+              quantity: data.quantity?.toString() || '1'
             });
           }
         });
@@ -63,6 +66,10 @@ export default function EditBook() {
     }
     if (!form.author.trim()) {
       alert('저자가 없습니다.');
+      return;
+    }
+    if (!form.quantity.trim() || Number(form.quantity) <= 0) {
+      alert('수량은 1 이상이어야 합니다.');
       return;
     }
 
@@ -102,6 +109,7 @@ export default function EditBook() {
       <div><label>가격: </label><input name="price" value={form.price} onChange={handleChange} /></div>
       <div><label>페이지 수: </label><input name="pages" value={form.pages} onChange={handleChange} /></div>
       <div><label>언어: </label><input name="language" value={form.language} onChange={handleChange} /></div>
+      <div><label><span style={{ color: 'red' }}>*</span>수량: </label><input name="quantity" type="number" value={form.quantity} onChange={handleChange} min={1} /></div>
       <div>
         <label>설명:</label><br />
         <textarea name="description" rows={4} cols={60} value={form.description} onChange={handleChange} />

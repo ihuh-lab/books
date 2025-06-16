@@ -15,6 +15,7 @@ interface Book {
   language: string;
   description: string;
   description2: string;
+  quantity: string;
 }
 
 export default function BookView() {
@@ -56,6 +57,7 @@ export default function BookView() {
       <p><strong>가격:</strong> {book.price}</p>
       <p><strong>페이지 수:</strong> {book.pages}</p>
       <p><strong>언어:</strong> {book.language}</p>
+      <p><strong>수량:</strong> {book.quantity}</p>
       <div style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
         <div style={{ flex: 1 }}>
           <p><strong>설명:</strong></p>

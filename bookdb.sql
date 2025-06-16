@@ -37,6 +37,7 @@ CREATE TABLE `books` (
   `description` text DEFAULT NULL,
   `description2` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `quantity` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,11 +49,11 @@ CREATE TABLE `books` (
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
 INSERT INTO `books` VALUES
-(1,'삼국지','소설','나관중','동아출판','2025-06-16','123456',0,0,'한국어','설명','상세설명','2025-06-15 12:16:42'),
-(2,'수호지','','질베른','','2025-06-16','',0,0,'','','','2025-06-16 01:14:36'),
-(3,'시간의 역사','','스티브 호킹','','2025-06-16','',0,0,'','','','2025-06-16 01:15:07'),
-(4,'해저2만리','','쥘베른','','2025-06-15','',0,0,'','','','2025-06-15 12:26:50'),
-(5,'지하세계','','질베른','','2025-06-15','',0,0,'','','','2025-06-15 12:32:02');
+(1,'삼국지','소설','나관중','동아출판','2025-06-16','123456',0,0,'한국어','설명','상세설명','2025-06-15 12:16:42',0),
+(2,'수호지','','질베른','','2025-06-16','',0,0,'','','','2025-06-16 01:14:36',0),
+(3,'시간의 역사','','스티브 호킹','','2025-06-16','',0,0,'','','','2025-06-16 01:15:07',0),
+(4,'해저2만리','','쥘베른','','2025-06-15','',0,0,'','','','2025-06-15 12:26:50',0),
+(5,'지하세계','','질베른','','2025-06-15','',0,0,'','','','2025-06-15 12:32:02',0);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -65,4 +66,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-16  1:39:47
+-- Dump completed on 2025-06-16  3:24:34

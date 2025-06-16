@@ -9,8 +9,8 @@ interface Book {
   publisher: string;
   published_date: string;
   isbn: string;
-  description: string;
-  [key: string]: any; // 예외 처리 (추가 필드용)
+  quantity: number;
+  [key: string]: any;
 }
 
 export default function BookList() {
@@ -59,7 +59,7 @@ export default function BookList() {
               <th style={cell}>출판사</th>
               <th style={cell}>출판일</th>
               <th style={cell}>ISBN</th>
-              <th style={cell}>설명</th>
+              <th style={cell}>수량</th>
               <th style={cell}>작업</th>
             </tr>
           </thead>
@@ -72,7 +72,7 @@ export default function BookList() {
                 <td style={cell}>{book.publisher}</td>
                 <td style={cell}>{book.published_date}</td>
                 <td style={cell}>{book.isbn}</td>
-                <td style={cell}>{book.description}</td>
+                <td style={cell}>{book.quantity ?? 0}</td>
                 <td style={cell}>
                   <Link href={`/view?id=${book.id}`}><button>보기</button></Link>{' '}
                   <Link href={`/edit?id=${book.id}`}><button>수정</button></Link>{' '}

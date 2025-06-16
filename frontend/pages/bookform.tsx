@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -15,12 +15,10 @@ interface BookFormData {
   price: string;
   pages: string;
   language: string;
+  quantity: string;
 }
 
-interface Book {
-  id: number;
-  [key: string]: any;
-}
+interface Book extends BookFormData {}
 
 export default function BookForm() {
   const [form, setForm] = useState<BookFormData>({
@@ -35,7 +33,8 @@ export default function BookForm() {
     category: '',
     price: '',
     pages: '',
-    language: ''
+    language: '',
+    quantity: '1'
   });
 
   const router = useRouter();
@@ -59,7 +58,8 @@ export default function BookForm() {
               category: data.category || '',
               price: data.price?.toString() || '',
               pages: data.pages?.toString() || '',
-              language: data.language || ''
+              language: data.language || '',
+              quantity: data.quantity?.toString() || '1'
             });
           }
         });
@@ -91,6 +91,10 @@ export default function BookForm() {
       alert('저자가 없습니다.');
       return;
     }
+    if (!form.quantity.trim() || Number(form.quantity) <= 0) {
+      alert('수량은 1 이상이어야 합니다.');
+      return;
+    }
 
     const now = new Date().toISOString().split('T')[0];
 
@@ -99,6 +103,7 @@ export default function BookForm() {
       published_date: form.published_date || now,
       price: form.price || 0,
       pages: form.pages || 0,
+      quantity: form.quantity || 1,
       description: form.description || '',
       description2: form.description2 || '',
       category: form.category || '',
@@ -127,7 +132,8 @@ export default function BookForm() {
           category: '',
           price: '',
           pages: '',
-          language: ''
+          language: '',
+          quantity: '1'
         });
       }
     } catch (err) {
@@ -152,6 +158,7 @@ export default function BookForm() {
         <label>가격: <input type="number" name="price" value={form.price} onChange={handleChange} /></label><br /><br />
         <label>페이지 수: <input type="number" name="pages" value={form.pages} onChange={handleChange} /></label><br /><br />
         <label>언어: <input type="text" name="language" value={form.language} onChange={handleChange} /></label><br /><br />
+        <label>수량<span style={{ color: 'red' }}>*</span>: <input type="number" name="quantity" value={form.quantity} onChange={handleChange} min={1} /></label><br /><br />
         <div style={{ display: 'flex', gap: '1rem' }}>
           <label style={{ flex: 1 }}>설명:<br /><textarea name="description" rows={4} style={{ width: '100%' }} value={form.description} onChange={handleChange} /></label>
           <label style={{ flex: 1 }}>상세설명:<br /><textarea name="description2" rows={6} style={{ width: '100%' }} value={form.description2} onChange={handleChange} /></label>
