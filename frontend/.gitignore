@@ -1,0 +1,6 @@
+node_modules/
+.next/
+tsconfig.tsbuildinfo
+.eslintrc.json
+next-env.d.ts
+*.env.local
