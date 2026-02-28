@@ -81,4 +81,24 @@ mysqldump -u [user] -p bookdb > bookdb.sql
 - 도서 리스트: [http://books.epics.kr/booklist](http://books.epics.kr/booklist)  
 - 도서 등록: [http://books.epics.kr/bookform](http://books.epics.kr/bookform)
 
+---
 
+## 🤖 OpenClaw란?
+
+**OpenClaw**는 오픈소스 자체 호스팅(self-hosted) AI 에이전트 및 자동화 플랫폼입니다.  
+클라우드 기반 챗봇과 달리, OpenClaw는 사용자의 컴퓨터나 서버에서 직접 실행되며 WhatsApp, Telegram, Discord, Slack 등 다양한 메시징 앱과 연동하여 실제 작업을 자동화할 수 있습니다.
+
+### 주요 특징
+
+- **자체 호스팅**: 사용자 하드웨어에서 직접 실행되어 데이터 프라이버시를 보장합니다.
+- **멀티 채널 지원**: 하나의 게이트웨이로 여러 메신저 앱을 동시에 사용할 수 있습니다.
+- **AI 에이전트 특화 설계**: 도구 사용, 영구 세션 메모리, 멀티에이전트 협업을 지원합니다.
+- **스킬/플러그인 확장**: JavaScript 또는 TypeScript로 작성된 수천 개의 스킬을 통해 이메일, 캘린더, 웹 스크래핑, 코드 리팩토링 등 다양한 작업을 자동화할 수 있습니다.
+- **시스템 수준 접근**: 파일 읽기/쓰기, 셸 명령 실행 등 시스템 작업을 수행할 수 있습니다.
+- **영구 메모리 및 능동적 동작**: 사용자 설정과 컨텍스트를 기억하고 스케줄 작업(크론 잡)을 실행할 수 있습니다.
+- **모델 유연성**: Anthropic, OpenAI 등 클라우드 AI API 또는 Ollama 같은 로컬 LLM과 연결할 수 있습니다.
+
+### 오픈소스 정보
+
+- **라이선스**: MIT
+- **공식 문서**: [https://docs.openclaw.ai](https://docs.openclaw.ai)
