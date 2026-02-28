@@ -81,4 +81,36 @@ mysqldump -u [user] -p bookdb > bookdb.sql
 - 도서 리스트: [http://books.epics.kr/booklist](http://books.epics.kr/booklist)  
 - 도서 등록: [http://books.epics.kr/bookform](http://books.epics.kr/bookform)
 
+---
+
+## 🔐 오픈-클로즈드 원칙 (Open-Closed Principle, OCP)
+
+**오픈-클로즈드 원칙(OCP)** 은 SOLID 객체지향 설계 원칙 중 하나로, 다음을 의미합니다:
+
+> **소프트웨어 엔티티(클래스, 모듈, 함수 등)는 확장에는 열려 있어야 하고(Open), 수정에는 닫혀 있어야 한다(Closed).**
+
+### 핵심 개념
+
+- **확장에 열려 있다(Open for extension):** 새로운 기능이나 동작을 추가할 수 있어야 합니다.
+- **수정에 닫혀 있다(Closed for modification):** 기존 코드를 변경하지 않고도 새로운 기능을 추가할 수 있어야 합니다.
+
+### 이 프로젝트에서의 적용 예시
+
+이 도서 관리 시스템에서 OCP는 다음과 같이 적용됩니다:
+
+- **백엔드 API 구조:** `/book` 엔드포인트는 GET, POST, PUT, DELETE 메서드를 각각 독립적으로 처리합니다. 새로운 엔드포인트(예: `/book/search`, `/book/export`)를 추가할 때 기존 라우트 코드를 수정하지 않고 새 라우트만 추가하면 됩니다.
+- **프론트엔드 페이지 구조:** `booklist`, `bookform`, `view`, `edit`, `delete` 페이지가 각각 독립적으로 구성되어 있어, 새로운 페이지(예: 통계 페이지, 검색 페이지)를 기존 코드 수정 없이 추가할 수 있습니다.
+
+### OCP를 지키지 않을 경우 발생하는 문제
+
+- 기능 추가 시마다 기존 코드를 수정해야 하므로 버그 발생 위험 증가
+- 코드 변경에 따른 의도치 않은 부작용(Side Effect) 발생
+- 테스트 및 유지보수 비용 증가
+
+### 참고 자료
+
+- [SOLID 원칙 - 나무위키](https://namu.wiki/w/SOLID)
+- [개방-폐쇄 원칙 - 위키백과](https://ko.wikipedia.org/wiki/%EA%B0%9C%EB%B0%A9-%ED%8F%90%EC%87%84_%EC%9B%90%EC%B9%99)
+- [Open–closed principle - Wikipedia (영문)](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
+
 
